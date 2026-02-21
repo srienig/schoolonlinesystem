@@ -6,22 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Student - SchoolSync</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
+                            sidebar: '#1e293b', // Dark Slate
+                            active: '#10b981', // Emerald 500
+                            hover: '#334155',
                         }
                     }
                 }
@@ -30,17 +27,24 @@
     </script>
 </head>
 
-<body class="bg-gray-50 flex h-screen overflow-hidden">
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-white border-r border-gray-100 hidden md:flex flex-col">
-        <div class="h-16 flex items-center px-6 border-b border-gray-100">
-            <span class="text-2xl font-bold text-gray-900">School<span class="text-brand-600">Sync</span></span>
+    <aside class="w-64 bg-slate-900 text-gray-300 flex flex-col transition-all duration-300">
+        <div class="h-16 flex items-center px-6 border-b border-slate-800">
+            <span class="text-xl font-bold text-white flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332-4.5 1.253">
+                    </path>
+                </svg>
+                SMS
+            </span>
         </div>
 
-        <nav class="flex-1 px-4 py-6 space-y-2">
+        <nav class="flex-1 px-3 py-6 space-y-1">
             <a href="dashboard.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -49,7 +53,7 @@
                 Dashboard
             </a>
             <a href="students.html"
-                class="flex items-center px-4 py-3 bg-brand-50 text-brand-700 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
@@ -58,7 +62,7 @@
                 Students
             </a>
             <a href="attendance.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
@@ -67,7 +71,7 @@
                 Attendance
             </a>
             <a href="reports.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
@@ -76,26 +80,25 @@
                 Reports
             </a>
             <a href="register.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                 </svg>
                 Register
             </a>
+            <div class="pt-4 mt-4 border-t border-slate-800">
+                <button onclick="window.location.href='index.html'"
+                    class="flex items-center px-4 py-2 text-red-400 hover:bg-red-900/20 hover:text-red-300 rounded-lg w-full transition-colors font-medium text-sm">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                    Logout
+                </button>
+            </div>
         </nav>
-
-        <div class="p-4 border-t border-gray-100">
-            <button onclick="window.location.href='index.html'"
-                class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg w-full transition-colors font-medium text-sm">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                    </path>
-                </svg>
-                Logout
-            </button>
-        </div>
     </aside>
 
     <!-- Main Content -->
@@ -246,60 +249,83 @@
                         Contact Information
                     </h2>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6 hidden"
+                        id="guardianError">
+                        At least one contact record is required.
+                    </div>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-8 p-6 bg-gray-50 rounded-xl border border-gray-100">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">New Contact Entry
+                            </h3>
+                        </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Guardian Type</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Guardian Type</label>
                             <select id="guardianType"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
+                                class="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none text-sm">
                                 <option value="">Select Type</option>
                                 <option value="Father">Father</option>
                                 <option value="Mother">Mother</option>
                                 <option value="Guardian">Guardian</option>
                             </select>
                         </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Parent/Guardian Name</label>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label>
                             <input type="text" id="parentName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
+                                class="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none text-sm">
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">National ID No</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">National ID No</label>
                             <input type="text" id="nic"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                placeholder="ID Number" required>
+                                class="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none text-sm"
+                                placeholder="ID Number">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                             <input type="email" id="email"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                placeholder="example@mail.com" required>
+                                class="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none text-sm"
+                                placeholder="example@mail.com">
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact No 1</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Contact No 1</label>
                             <input type="tel" id="contact1"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
+                                class="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none text-sm">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact No 2</label>
-                            <input type="tel" id="contact2"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <input type="text" id="address"
+                                class="w-full px-3 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none text-sm">
+                        </div>
+                        <div class="md:col-span-2 flex justify-end">
+                            <button type="button" onclick="addContactRecord()"
+                                class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition shadow-sm">
+                                ADD CONTACT RECORD
+                            </button>
                         </div>
                     </div>
 
+                    <!-- Contact List -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
-                        <textarea id="address" rows="3"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                            required></textarea>
+                        <h3 class="text-sm font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            Current Contact Records
+                            <span id="contactCount"
+                                class="bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full text-xs">0</span>
+                        </h3>
+                        <div class="overflow-hidden border border-gray-100 rounded-xl">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-gray-50 text-gray-500">
+                                    <tr>
+                                        <th class="px-4 py-3 font-medium">Type</th>
+                                        <th class="px-4 py-3 font-medium">Name</th>
+                                        <th class="px-4 py-3 font-medium text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactTableBody" class="divide-y divide-gray-50 bg-white">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -413,13 +439,21 @@
             document.getElementById('academicYear').value = student.academicYear || 2026;
             document.getElementById('classTeacher').value = student.classTeacher || '';
 
-            document.getElementById('guardianType').value = student.guardianType || '';
-            document.getElementById('parentName').value = student.parentName || '';
-            document.getElementById('nic').value = student.nic || '';
-            document.getElementById('email').value = student.email || '';
-            document.getElementById('contact1').value = student.contact1 || student.contact || '';
-            document.getElementById('contact2').value = student.contact2 || '';
-            document.getElementById('address').value = student.address || '';
+            // Contact Records Initialization
+            if (student.contacts && Array.isArray(student.contacts)) {
+                contactRecords = student.contacts;
+            } else if (student.parentName) {
+                // Fallback / Initial load from old structure
+                contactRecords = [{
+                    type: student.guardianType || 'Guardian',
+                    name: student.parentName,
+                    nic: student.nic || '',
+                    email: student.email || '',
+                    phone: student.contact1 || student.contact || '',
+                    address: student.address || ''
+                }];
+            }
+            renderContactRecords();
 
             if (student.achievement) {
                 document.getElementById('certName').value = student.achievement.certName || '';
@@ -428,6 +462,70 @@
                 document.getElementById('achievementDesc').value = student.achievement.description || '';
             }
         });
+
+        let contactRecords = [];
+
+        function addContactRecord() {
+            const gType = document.getElementById('guardianType').value;
+            const pName = document.getElementById('parentName').value.trim();
+            const nic = document.getElementById('nic').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const contact1 = document.getElementById('contact1').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            if (!gType || !pName || !nic || !email || !contact1 || !address) {
+                alert("Please fill in all contact fields before adding a record.");
+                return;
+            }
+
+            contactRecords.push({
+                type: gType,
+                name: pName,
+                nic: nic,
+                email: email,
+                phone: contact1,
+                address: address
+            });
+
+            renderContactRecords();
+            clearContactFields();
+            document.getElementById('guardianError').classList.add('hidden');
+        }
+
+        function removeContactRecord(index) {
+            contactRecords.splice(index, 1);
+            renderContactRecords();
+        }
+
+        function renderContactRecords() {
+            const tbody = document.getElementById('contactTableBody');
+            const count = document.getElementById('contactCount');
+            count.innerText = contactRecords.length;
+
+            if (contactRecords.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" class="px-4 py-8 text-center text-gray-400 italic">No contact records added yet.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = contactRecords.map((c, i) => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-gray-900">${c.type}</td>
+                    <td class="px-4 py-3 text-gray-600">${c.name}</td>
+                    <td class="px-4 py-3 text-right">
+                        <button type="button" onclick="removeContactRecord(${i})" class="text-red-500 hover:text-red-700 font-medium text-xs">Remove</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function clearContactFields() {
+            document.getElementById('guardianType').value = '';
+            document.getElementById('parentName').value = '';
+            document.getElementById('nic').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('contact1').value = '';
+            document.getElementById('address').value = '';
+        }
 
         function updateFullName() {
             const first = document.getElementById('firstName').value.trim();
@@ -440,6 +538,13 @@
 
         function handleUpdate(e) {
             e.preventDefault();
+
+            // Contact Record Validation
+            if (contactRecords.length === 0) {
+                document.getElementById('guardianError').classList.remove('hidden');
+                document.getElementById('guardianError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
 
             const form = e.target;
             if (!form.checkValidity()) {
@@ -468,15 +573,17 @@
                 academicYear: document.getElementById('academicYear').value,
                 classTeacher: document.getElementById('classTeacher').value,
 
-                // Contact
-                guardianType: document.getElementById('guardianType').value,
-                parentName: document.getElementById('parentName').value,
-                nic: document.getElementById('nic').value,
-                email: document.getElementById('email').value,
-                contact: document.getElementById('contact1').value, // Backward compat
-                contact1: document.getElementById('contact1').value,
-                contact2: document.getElementById('contact2').value,
-                address: document.getElementById('address').value,
+                // Contact Records Validation
+                contacts: contactRecords,
+
+                // Legacy Primary Contact Info (mapping for compatibility)
+                guardianType: contactRecords.length > 0 ? contactRecords[0].type : '',
+                parentName: contactRecords.length > 0 ? contactRecords[0].name : '',
+                nic: contactRecords.length > 0 ? contactRecords[0].nic : '',
+                email: contactRecords.length > 0 ? contactRecords[0].email : '',
+                contact: contactRecords.length > 0 ? contactRecords[0].phone : '',
+                contact1: contactRecords.length > 0 ? contactRecords[0].phone : '',
+                address: contactRecords.length > 0 ? contactRecords[0].address : '',
 
                 // Achievements
                 achievement: {

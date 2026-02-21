@@ -4,43 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration - SchoolSync</title>
+    <title>Student Registration - SMS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
+                            sidebar: '#1e293b', // Dark Slate
+                            active: '#10b981', // Emerald 500
+                            hover: '#334155',
                         }
                     }
                 }
             }
         }
     </script>
+    <style>
+        .tab-btn.active {
+            border-bottom: 2px solid #10b981;
+            color: #10b981;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50 flex h-screen overflow-hidden">
+<body class="bg-gray-50 flex h-screen overflow-hidden font-sans">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-white border-r border-gray-100 hidden md:flex flex-col">
-        <div class="h-16 flex items-center px-6 border-b border-gray-100">
-            <span class="text-2xl font-bold text-gray-900">School<span class="text-brand-600">Sync</span></span>
+    <aside class="w-64 bg-slate-900 text-gray-300 flex flex-col transition-all duration-300">
+        <div class="h-16 flex items-center px-6 border-b border-slate-800">
+            <span class="text-xl font-bold text-white flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                    </path>
+                </svg>
+                SMS
+            </span>
         </div>
 
-        <nav class="flex-1 px-4 py-6 space-y-2">
+        <nav class="flex-1 px-3 py-6 space-y-1">
             <a href="dashboard.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -48,26 +59,33 @@
                 </svg>
                 Dashboard
             </a>
-            <a href="students.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+            <a href="register.html"
+                class="flex items-center px-4 py-3 bg-emerald-600 text-white rounded-lg font-medium transition-colors shadow-lg shadow-emerald-900/20">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                    </path>
+                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                 </svg>
-                Students
+                Student Registration
+            </a>
+            <a href="students.html"
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                Student Search
             </a>
             <a href="attendance.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
                     </path>
                 </svg>
-                Attendance
+                Attendance Module
             </a>
             <a href="reports.html"
-                class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-xl font-medium transition-colors">
+                class="flex items-center px-4 py-3 hover:bg-slate-800 hover:text-white rounded-lg font-medium transition-colors">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
@@ -75,269 +93,249 @@
                 </svg>
                 Reports
             </a>
-            <a href="register.html"
-                class="flex items-center px-4 py-3 bg-brand-50 text-brand-700 rounded-xl font-medium transition-colors">
-                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
-                </svg>
-                Register
-            </a>
+            <div class="pt-4 mt-4 border-t border-slate-800">
+                <button onclick="window.location.href='index.html'"
+                    class="flex items-center px-4 py-2 text-red-400 hover:bg-red-900/20 hover:text-red-300 rounded-lg w-full transition-colors font-medium text-sm">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                    Logout
+                </button>
+            </div>
         </nav>
-
-        <div class="p-4 border-t border-gray-100">
-            <button onclick="window.location.href='index.html'"
-                class="flex items-center px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg w-full transition-colors font-medium text-sm">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                    </path>
-                </svg>
-                Logout
-            </button>
-        </div>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col overflow-y-auto">
-        <!-- Topbar -->
+    <main class="flex-1 flex flex-col overflow-y-auto bg-gray-50">
+        <!-- Header -->
         <header
-            class="h-16 bg-white border-b border-gray-100 flex items-center justify-between px-8 sticky top-0 z-10 w-full">
-            <h1 class="text-2xl font-bold text-gray-800">Student Registration</h1>
-            <div class="h-8 w-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold">
-                A
-            </div>
+            class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10 w-full shadow-sm">
+            <h1 class="text-xl font-bold text-gray-800">Student Registration</h1>
+            <div class="text-sm text-gray-500">Create and update student enrollment records.</div>
         </header>
 
-        <div class="p-8 max-w-5xl mx-auto w-full">
-            <form onsubmit="handleRegister(event)" class="space-y-8">
+        <div class="p-8 max-w-6xl mx-auto w-full">
 
-                <!-- Personal Information -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                        <span
-                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3">1</span>
+            <!-- Tabs -->
+            <div class="mb-8 border-b border-gray-200">
+                <nav class="flex space-x-8" aria-label="Tabs">
+                    <button onclick="switchTab('personal')" id="tab-personal"
+                        class="tab-btn active py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
                         Personal Information
-                    </h2>
+                    </button>
+                    <button onclick="switchTab('contact')" id="tab-contact"
+                        class="tab-btn py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
+                        Contact Information
+                    </button>
+                    <button onclick="switchTab('achievement')" id="tab-achievement"
+                        class="tab-btn py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
+                        Achievement Details
+                    </button>
+                    <button onclick="switchTab('class')" id="tab-class"
+                        class="tab-btn py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap">
+                        Class Allocation
+                    </button>
+                </nav>
+            </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Student ID</label>
-                            <input type="text" id="studentId"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-500 font-mono"
-                                readonly>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Title <span
-                                    class="text-red-500">*</span></label>
-                            <select id="title"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
-                                <option value="">Select Title</option>
-                                <option value="Mr">Mr.</option>
-                                <option value="Miss">Miss.</option>
-                                <option value="Master">Master</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Gender <span
-                                    class="text-red-500">*</span></label>
-                            <select id="gender"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
-                                <option value="">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
-                        </div>
-                    </div>
+            <form id="registrationForm" onsubmit="handleRegister(event)"
+                class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 min-h-[500px]">
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">First Name <span
-                                    class="text-red-500">*</span></label>
-                            <input type="text" id="firstName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required oninput="updateFullName()">
+                <!-- Personal Tab -->
+                <div id="content-personal" class="tab-content transition-opacity duration-300">
+                    <div class="flex items-start gap-8 mb-8">
+                        <div class="flex flex-col items-center gap-3">
+                            <div
+                                class="w-32 h-32 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400">
+                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="text-xs text-emerald-600 font-medium cursor-pointer hover:underline">Upload
+                                Image</span>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Middle Name</label>
-                            <input type="text" id="middleName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                oninput="updateFullName()">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Last Name <span
-                                    class="text-red-500">*</span></label>
-                            <input type="text" id="lastName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required oninput="updateFullName()">
+
+                        <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Student ID</label>
+                                <input type="text" id="studentId"
+                                    class="w-full px-3 py-2 rounded border border-gray-300 bg-gray-50 text-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                    readonly>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Title <span
+                                        class="text-red-500">*</span></label>
+                                <select id="title"
+                                    class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                    required>
+                                    <option value="">Select Title</option>
+                                    <option value="Mr">Mr.</option>
+                                    <option value="Miss">Miss.</option>
+                                    <option value="Master">Master</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="firstName"
+                                    class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                    required oninput="updateFullName()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="lastName"
+                                    class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                    required oninput="updateFullName()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Middle Name</label>
+                                <input type="text" id="middleName"
+                                    class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                    oninput="updateFullName()">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Gender <span
+                                        class="text-red-500">*</span></label>
+                                <div class="flex gap-4 mt-2">
+                                    <label class="flex items-center"><input type="radio" name="gender" value="Male"
+                                            class="mr-2 text-emerald-600 focus:ring-emerald-500" required> Male</label>
+                                    <label class="flex items-center"><input type="radio" name="gender" value="Female"
+                                            class="mr-2 text-emerald-600 focus:ring-emerald-500"> Female</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Name in Full</label>
-                            <input type="text" id="fullName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 focus:border-brand-500 outline-none"
-                                readonly>
-                        </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth <span
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth <span
                                     class="text-red-500">*</span></label>
                             <input type="date" id="dob"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
                                 required>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Date Joined <span
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date Joined <span
                                     class="text-red-500">*</span></label>
                             <input type="date" id="dateJoined"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
                                 required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Name in Full</label>
+                            <input type="text" id="fullName"
+                                class="w-full px-3 py-2 rounded border border-gray-300 bg-gray-50 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                readonly>
                         </div>
                     </div>
                 </div>
 
-                <!-- Class Allocation -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                        <span
-                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3">2</span>
-                        Class Allocation
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Class/Grade <span
-                                    class="text-red-500">*</span></label>
-                            <select id="classGrade"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
-                                <option value="">Select Class</option>
-                                <option value="9">Grade 9</option>
-                                <option value="10">Grade 10</option>
-                                <option value="11">Grade 11</option>
-                                <option value="12">Grade 12</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Section <span
-                                    class="text-red-500">*</span></label>
-                            <select id="section"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
-                                <option value="A">Section A</option>
-                                <option value="B">Section B</option>
-                                <option value="C">Section C</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Academic Year <span
-                                    class="text-red-500">*</span></label>
-                            <input type="number" id="academicYear" value="2026" min="2000" max="2100"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Class Teacher</label>
-                            <input type="text" id="classTeacher"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                placeholder="Teacher's Name">
-                        </div>
+                <!-- Contact Tab -->
+                <div id="content-contact" class="tab-content hidden transition-opacity duration-300">
+                    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6 hidden"
+                        id="guardianError">
+                        Please add at least one parent contact record before saving.
                     </div>
-                </div>
 
-                <!-- Contact Information -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                        <span
-                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3">3</span>
-                        Contact Information
-                    </h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                        <div class="md:col-span-2">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">New Contact Record
+                            </h3>
+                        </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Guardian Type <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Guardian Type</label>
                             <select id="guardianType"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                                 <option value="">Select Type</option>
                                 <option value="Father">Father</option>
                                 <option value="Mother">Mother</option>
                                 <option value="Guardian">Guardian</option>
                             </select>
                         </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Parent/Guardian Name <span
-                                    class="text-red-500">*</span></label>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label>
                             <input type="text" id="parentName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                required>
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">National ID No <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">National ID No</label>
                             <input type="text" id="nic"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                placeholder="ID Number" required>
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                placeholder="XXXXXXXXXV">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                             <input type="email" id="email"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                placeholder="example@mail.com" required>
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                placeholder="parent@example.com">
                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact No 1 <span
-                                    class="text-red-500">*</span></label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Contact No 1</label>
                             <input type="tel" id="contact1"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                pattern="[0-9]{10}" placeholder="07XXXXXXXX" required
-                                title="Please enter a valid 10-digit phone number">
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="10">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact No 2</label>
-                            <input type="tel" id="contact2"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                                pattern="[0-9]{10}" placeholder="07XXXXXXXX">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                            <input type="text" id="address"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        </div>
+                        <div class="md:col-span-2 flex justify-end">
+                            <button type="button" onclick="addContactRecord()"
+                                class="px-4 py-2 bg-slate-800 text-white text-xs font-bold rounded hover:bg-slate-700 transition">
+                                ADD CONTACT RECORD
+                            </button>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Address <span
-                                class="text-red-500">*</span></label>
-                        <textarea id="address" rows="3"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
-                            required></textarea>
+                    <!-- Contact Records List -->
+                    <div class="mt-8">
+                        <h3 class="text-sm font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            Added Contact Records
+                            <span id="contactCount"
+                                class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full text-xs">0</span>
+                        </h3>
+                        <div class="overflow-hidden border border-gray-100 rounded-lg">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-gray-50 text-gray-500">
+                                    <tr>
+                                        <th class="px-4 py-3 font-medium">Type</th>
+                                        <th class="px-4 py-3 font-medium">Name</th>
+                                        <th class="px-4 py-3 font-medium">NIC</th>
+                                        <th class="px-4 py-3 font-medium">Phone</th>
+                                        <th class="px-4 py-3 font-medium text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactTableBody" class="divide-y divide-gray-50">
+                                    <tr>
+                                        <td colspan="5" class="px-4 py-8 text-center text-gray-400 italic">No contact
+                                            records added yet.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Achievement Details -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <h2 class="text-xl font-bold mb-6 text-gray-800 flex items-center">
-                        <span
-                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-sm mr-3">4</span>
-                        Achievement Details
-                    </h2>
+                <!-- Achievement Tab -->
+                <div id="content-achievement" class="tab-content hidden transition-opacity duration-300">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Student Name on
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Student Name on
                                 Certificate</label>
                             <input type="text" id="certName"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none">
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Achievement Type</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Achievement Type</label>
                             <select id="achievementType"
-                                class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none">
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                                 <option value="">Select Type</option>
                                 <option value="Sport">Sport</option>
                                 <option value="Academic">Academic</option>
@@ -347,52 +345,89 @@
                         </div>
                     </div>
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Institute</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Institute</label>
                         <input type="text" id="institute"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none">
+                            class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
                         <textarea id="achievementDesc" rows="3"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-brand-500 outline-none"
+                            class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
                             placeholder="Details of the achievement..."></textarea>
                     </div>
                 </div>
 
-                <!-- Actions -->
-                <div class="flex justify-end gap-4 pb-8">
-                    <button type="button" onclick="window.location.href='dashboard.html'"
-                        class="px-8 py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition">Cancel</button>
-                    <button type="submit"
-                        class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-lg shadow-brand-500/30 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                            </path>
-                        </svg>
-                        Complete Registration
-                    </button>
+                <!-- Class Tab -->
+                <div id="content-class" class="tab-content hidden transition-opacity duration-300">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Class/Grade <span
+                                    class="text-red-500">*</span></label>
+                            <select id="classGrade"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                required>
+                                <option value="">Select Class</option>
+                                <option value="9">Grade 9</option>
+                                <option value="10">Grade 10</option>
+                                <option value="11">Grade 11</option>
+                                <option value="12">Grade 12</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Section <span
+                                    class="text-red-500">*</span></label>
+                            <select id="section"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                required>
+                                <option value="A">Section A</option>
+                                <option value="B">Section B</option>
+                                <option value="C">Section C</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Academic Year <span
+                                    class="text-red-500">*</span></label>
+                            <input type="number" id="academicYear" value="2026" min="2000" max="2100"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Class Teacher</label>
+                            <input type="text" id="classTeacher"
+                                class="w-full px-3 py-2 rounded border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                                placeholder="Teacher Name">
+                        </div>
+                    </div>
                 </div>
+
+                <div class="mt-8 flex justify-end gap-3 pt-6 border-t border-gray-100">
+                    <button type="button" onclick="resetForm()"
+                        class="px-6 py-2 rounded bg-gray-100 text-gray-600 font-medium text-sm hover:bg-gray-200 transition">Reset</button>
+                    <button type="submit"
+                        class="px-8 py-2 rounded bg-emerald-600 text-white font-medium text-sm hover:bg-emerald-700 transition shadow-lg shadow-emerald-500/30">Complete
+                        Registration</button>
+                </div>
+
             </form>
         </div>
     </main>
 
     <!-- Success Modal -->
     <div id="successModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-        <div
-            class="bg-white p-6 rounded-2xl shadow-2xl max-w-sm w-full mx-4 text-center transform transition-all scale-100">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full mx-4 text-center">
+            <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Registration Successful!</h3>
-            <p class="text-gray-500 mb-6">Student data has been saved to the system.</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Registration Successful!</h3>
+            <p class="text-sm text-gray-500 mb-6">Student data has been saved to the system.</p>
             <div class="flex flex-col gap-2">
                 <button onclick="closeModalAndClear()"
-                    class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 rounded-lg transition">Add
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 rounded transition text-sm">Add
                     Another Student</button>
                 <button onclick="window.location.href='students.html'"
-                    class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-2.5 rounded-lg transition">View
+                    class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 rounded transition text-sm">View
                     Student List</button>
             </div>
         </div>
@@ -402,20 +437,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             generateId();
-            // Set today as default for date joined
             document.getElementById('dateJoined').valueAsDate = new Date();
         });
+
+        function switchTab(tabId) {
+            // Hide all
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            // Show target
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
 
         function updateFullName() {
             const first = document.getElementById('firstName').value.trim();
             const middle = document.getElementById('middleName').value.trim();
             const last = document.getElementById('lastName').value.trim();
-
-            // Allow for simple concatenation
             const fullName = [first, middle, last].filter(Boolean).join(' ');
             document.getElementById('fullName').value = fullName;
-
-            // Also suggest cert name if empty
+            // Also suggest cert name
             if (!document.getElementById('certName').value && fullName) {
                 document.getElementById('certName').value = fullName;
             }
@@ -425,8 +465,6 @@
             const students = Storage.getStudents();
             let nextNum = 1;
             if (students.length > 0) {
-                // Find max ID logic considering potential non-numeric SIDs in future? 
-                // For now sticking to SXXX format
                 const nums = students.map(s => {
                     const match = s.id.match(/^S(\d+)$/);
                     return match ? parseInt(match[1]) : 0;
@@ -437,72 +475,158 @@
             document.getElementById('studentId').value = 'S' + nextNum.toString().padStart(3, '0');
         }
 
-        function handleRegister(e) {
-            e.preventDefault();
+        let contactRecords = [];
 
-            const form = e.target;
-            if (!form.checkValidity()) {
-                form.reportValidity();
+        function addContactRecord() {
+            const gType = document.getElementById('guardianType').value;
+            const pName = document.getElementById('parentName').value.trim();
+            const nic = document.getElementById('nic').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const contact1 = document.getElementById('contact1').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            if (!gType || !pName || !nic || !email || !contact1 || !address) {
+                alert("Please fill in all contact fields before adding a record.");
                 return;
             }
 
-            // Construct huge object
-            const student = {
-                // Header
-                id: document.getElementById('studentId').value,
+            contactRecords.push({
+                type: gType,
+                name: pName,
+                nic: nic,
+                email: email,
+                phone: contact1,
+                address: address
+            });
 
-                // Personal
+            renderContactRecords();
+            clearContactFields();
+            document.getElementById('guardianError').classList.add('hidden');
+        }
+
+        function removeContactRecord(index) {
+            contactRecords.splice(index, 1);
+            renderContactRecords();
+        }
+
+        function renderContactRecords() {
+            const tbody = document.getElementById('contactTableBody');
+            const count = document.getElementById('contactCount');
+            count.innerText = contactRecords.length;
+
+            if (contactRecords.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="px-4 py-8 text-center text-gray-400 italic">No contact records added yet.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = contactRecords.map((c, i) => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-gray-900">${c.type}</td>
+                    <td class="px-4 py-3 text-gray-600">${c.name}</td>
+                    <td class="px-4 py-3 text-gray-500 font-mono text-xs">${c.nic}</td>
+                    <td class="px-4 py-3 text-gray-600">${c.phone}</td>
+                    <td class="px-4 py-3 text-right">
+                        <button type="button" onclick="removeContactRecord(${i})" class="text-red-500 hover:text-red-700 font-medium text-xs">Remove</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function clearContactFields() {
+            document.getElementById('guardianType').value = '';
+            document.getElementById('parentName').value = '';
+            document.getElementById('nic').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('contact1').value = '';
+            document.getElementById('address').value = '';
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+
+            // Explicit Validation for Guardian info
+            if (contactRecords.length === 0) {
+                switchTab('contact');
+                document.getElementById('guardianError').classList.remove('hidden');
+                document.getElementById('guardianError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            const form = e.target;
+            if (!form.checkValidity()) {
+                const invalidEl = form.querySelector(':invalid');
+                if (invalidEl) {
+                    const tabContent = invalidEl.closest('.tab-content');
+                    if (tabContent) {
+                        const tabId = tabContent.id.replace('content-', '');
+                        switchTab(tabId);
+                        invalidEl.focus();
+                    }
+                }
+                return;
+            }
+
+            const primaryContact = contactRecords[0];
+
+            const student = {
+                id: document.getElementById('studentId').value,
                 title: document.getElementById('title').value,
-                gender: document.getElementById('gender').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
                 firstName: document.getElementById('firstName').value,
                 middleName: document.getElementById('middleName').value,
                 lastName: document.getElementById('lastName').value,
-                name: document.getElementById('fullName').value, // Keeping 'name' for backward compatibility standard
+                name: document.getElementById('fullName').value,
                 fullName: document.getElementById('fullName').value,
                 dob: document.getElementById('dob').value,
                 dateJoined: document.getElementById('dateJoined').value,
-
-                // Allocations (mapping to old schema properties where suitable)
                 grade: document.getElementById('classGrade').value,
                 section: document.getElementById('section').value,
                 academicYear: document.getElementById('academicYear').value,
                 classTeacher: document.getElementById('classTeacher').value,
 
-                // Contact
-                guardianType: document.getElementById('guardianType').value,
-                parentName: document.getElementById('parentName').value,
-                nic: document.getElementById('nic').value,
-                email: document.getElementById('email').value,
-                contact: document.getElementById('contact1').value, // Backward compat
-                contact1: document.getElementById('contact1').value,
-                contact2: document.getElementById('contact2').value,
-                address: document.getElementById('address').value,
+                // Contacts List
+                contacts: contactRecords,
 
-                // Achievements
+                // Legacy Primary Contact Info (mapping for compatibility)
+                guardianType: primaryContact.type,
+                parentName: primaryContact.name,
+                nic: primaryContact.nic,
+                email: primaryContact.email,
+                contact: primaryContact.phone,
+                contact1: primaryContact.phone,
+                address: primaryContact.address,
+
                 achievement: {
                     certName: document.getElementById('certName').value,
                     type: document.getElementById('achievementType').value,
                     institute: document.getElementById('institute').value,
                     description: document.getElementById('achievementDesc').value
                 },
-
                 registeredAt: new Date().toISOString()
             };
 
             Storage.saveStudent(student);
-
             document.getElementById('successModal').classList.remove('hidden');
         }
 
         function closeModalAndClear() {
             document.getElementById('successModal').classList.add('hidden');
-            document.querySelector('form').reset();
-            // Reset dates
-            document.getElementById('dateJoined').valueAsDate = new Date();
-            generateId();
-            // Scroll to top
-            window.scrollTo(0, 0);
+            resetForm();
         }
+
+        function resetForm() {
+            document.getElementById('registrationForm').reset();
+            document.getElementById('dateJoined').valueAsDate = new Date();
+            switchTab('personal');
+            generateId();
+            document.getElementById('guardianError').classList.add('hidden');
+            // Clear readonly fields
+            document.getElementById('fullName').value = '';
+            // Clear contact records
+            contactRecords = [];
+            renderContactRecords();
+        }
+
     </script>
 </body>
 
